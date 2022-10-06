@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { UserContext } from "../context/user";
+import useFetchMovieMetadata from "../hooks/fetch_metadata";
 
 function Movie({ movie, userVotedForAward, onVote }){
     const {currentUser} = useContext(UserContext)
-
-    const [metadata, setMetadata] = useState(null)
-    const OMDB_API_KEY = "1200c1e9";
 
 
     // The movie's nomination in the current award
@@ -29,11 +26,8 @@ function Movie({ movie, userVotedForAward, onVote }){
 
 
     // Fetch the movie's metadata from movies api
-    useEffect(() => {
-        fetch(`http://www.omdbapi.com?apikey=${OMDB_API_KEY}&t=${movie.name}`)
-            .then((response) => response.json())
-            .then((data) => setMetadata(data))
-    }, []);
+    const [metadata] = useFetchMovieMetadata(movie.name)
+
 
     function vote(){
         setVoting(true)
