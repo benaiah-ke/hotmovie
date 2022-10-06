@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+@import "https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+.movie_card{
+    padding: 0 !important;
+    border-radius: 10px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    padding-bottom: 200px;
+    height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.vote-area{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie_card img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: 250px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.movie_info{
+    color: #5e5c5c;
 }
 
-.App-link {
-  color: #61dafb;
+.movie_info i{
+    font-size: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-title{
+    font-size: 20px
+}
+
+.credits{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #8e24aa;
+    font-size: 18px;
+}
+
+.credits .card-body{
+    padding: 0;
+}
+.credits p{
+    padding-top: 15px;
+    padding-left: 18px;
+}
+.credits .card-body i{
+    color: #8e24aa;
 }

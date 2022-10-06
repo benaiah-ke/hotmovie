@@ -26,11 +26,22 @@ function Home(){
         <Award key={award.id} award={award} movies={movies} />
     ))
 
-    return (
-        <div>
-            <div>Loading awards...</div>
+    const results = <div>Results</div>
 
-            {awardList}
+    return (
+        <div className="container-fluid py-5">
+            <div className="row">
+                <div className="col-lg-8">
+                    <h2 className="mb-4">NOMINATED MOVIES</h2>
+
+                    {awardList}
+                </div>
+
+                <div className="col-lg-4">
+                    <h2>LATEST RESULTS</h2>
+                    {results}
+                </div>
+            </div>
         </div>
     );
 }
