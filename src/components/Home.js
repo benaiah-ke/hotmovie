@@ -1,40 +1,20 @@
 import React, { useContext } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import { MoviesContext } from "../context/movies";
 import { UserContext } from "../context/user";
-import { URLS } from "../urls";
 import { Award } from "./Award";
+import { Results } from "./Results";
 
 function Home(){
-    const {currentUser, setCurrentUser} = useContext(UserContext)
-    const [awards, setAwards] = useState([])
-    const [movies, setMovies] = useState([])
-
-    // Fetch available awards for user to vote
-    useEffect(() => {
-        fetch(URLS.awards)
-            .then((resp) => resp.json())
-            .then((awards) => setAwards(awards))
-    }, [])
-
-    // Fetch movies from our db
-    useEffect(() => {
-        fetch(URLS.movies)
-            .then((resp) => resp.json())
-            .then((movies) => setMovies(movies))
-    }, [awards])
+    const {currentUser} = useContext(UserContext)
+    const {awards} = useContext(MoviesContext)
 
     const awardList = awards.map((award) => (
         <Award
             key={award.id}
             award={award}
-            movies={movies}
-            setMovies={setMovies}
             />
     ))
-
-    const results = <div>Results</div>
 
     // If a user is not logged in, redirect to login
     if(currentUser === null){
@@ -54,7 +34,7 @@ function Home(){
 
                 <div className="col-lg-4">
                     <h2>LATEST RESULTS</h2>
-                    {/* {results} */}
+                    <Results />
                 </div>
             </div>
         </div>

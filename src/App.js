@@ -7,6 +7,7 @@ import { Home } from './components/Home';
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import NavBar from "./components/Navbar";
+import { MoviesProvider } from "./context/movies";
 
 function App() {
   const {currentUser, setCurrentUser} = useContext(UserContext)
@@ -19,7 +20,7 @@ function App() {
           <NavBar />
 
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<MoviesProvider><Home /></MoviesProvider>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>

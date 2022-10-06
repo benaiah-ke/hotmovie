@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { UserContext } from "../context/user";
 
 function Movie({ movie, userVotedForAward, onVote }){
-    const {currentUser, setCurrentUser} = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
 
     const [metadata, setMetadata] = useState(null)
     const OMDB_API_KEY = "1200c1e9";

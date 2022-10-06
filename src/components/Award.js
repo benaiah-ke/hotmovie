@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { useEffect } from "react";
+import { MoviesContext } from "../context/movies";
 import { UserContext } from "../context/user";
 import { URLS } from "../urls";
 import { Movie } from "./Movie";
 
-function Award({ award, movies, setMovies }){
-    const {currentUser, setCurrentUser} = useContext(UserContext)
+function Award({ award }){
+    const {currentUser} = useContext(UserContext)
+    const {movies, setMovies} = useContext(MoviesContext)
 
     // Shows whether user is casting a vote for the award
     const [currentlyVoting, setVoting] = useState(false);
