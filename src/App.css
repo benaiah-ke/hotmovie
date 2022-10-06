@@ -4,17 +4,12 @@
 .movie_card{
     padding: 0 !important;
     border-radius: 10px;
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.2);
     position: relative;
-    padding-bottom: 200px;
     height: 100%;
 }
 
 .vote-area{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     padding: 15px;
 }
 
@@ -36,21 +31,9 @@
     font-size: 20px
 }
 
-.credits{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 2px solid #8e24aa;
-    font-size: 18px;
-}
-
-.credits .card-body{
-    padding: 0;
-}
-.credits p{
-    padding-top: 15px;
-    padding-left: 18px;
-}
-.credits .card-body i{
-    color: #8e24aa;
+.movie-plot{
+    line-height: 1.4rem;
+    height: 4.2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

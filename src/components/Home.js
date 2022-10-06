@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { UserContext } from "../context/user";
 import { URLS } from "../urls";
 import { Award } from "./Award";
 
 function Home(){
+    const {currentUser, setCurrentUser} = useContext(UserContext)
     const [awards, setAwards] = useState([])
     const [movies, setMovies] = useState([])
 
@@ -23,10 +26,22 @@ function Home(){
     }, [awards])
 
     const awardList = awards.map((award) => (
-        <Award key={award.id} award={award} movies={movies} />
+        <Award
+            key={award.id}
+            award={award}
+            movies={movies}
+            setMovies={setMovies}
+            />
     ))
 
     const results = <div>Results</div>
+
+    // If a user is not logged in, redirect to login
+    if(currentUser === null){
+        return (
+            <Navigate to="/login" />
+        )
+    }
 
     return (
         <div className="container-fluid py-5">
@@ -39,7 +54,7 @@ function Home(){
 
                 <div className="col-lg-4">
                     <h2>LATEST RESULTS</h2>
-                    {results}
+                    {/* {results} */}
                 </div>
             </div>
         </div>

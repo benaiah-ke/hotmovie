@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { UserContext } from "../context/user";
 
-function Movie({ movie }){
+function Movie({ movie, userVotedForAward, onVote }){
+    const {currentUser, setCurrentUser} = useContext(UserContext)
+
     const [metadata, setMetadata] = useState(null)
     const OMDB_API_KEY = "1200c1e9";
 
+
+    // The movie's nomination in the current award
+    const nomination = movie.nominations[movie.nominationIndex]
+
+
     // Will show if the movie is winning the award
-    var winningMovie = true;
-    
-    // Will show if the user has cast a vote for the award
-    var voteAlreadyCast = true;
+    var winningMovie = false;
+
+
+    // Shows if the user voted for this movie for the current award
+    var userVotedForMovie = nomination.voters.indexOf(currentUser.id) !== -1;
+
+
+    // Keeps state of whether user has clicked the vote button and
+    // the vote is currently being submitted
+    // helps prevent users from submitting votes for one award more than once
+    const [currentlyVotingForMovie, setVoting] = useState(false);
 
 
     // Fetch the movie's metadata from movies api
@@ -20,52 +35,78 @@ function Movie({ movie }){
             .then((data) => setMetadata(data))
     }, []);
 
-    console.log(metadata);
+    function vote(){
+        setVoting(true)
+        onVote(movie)
+    }
+
+    const voteUi =
+            userVotedForAward ?
+            (
+                <span>Vote for category already cast
+                    { userVotedForMovie ? <span className="text-success">(For this movie)</span>:''}
+                </span>
+            ) :
+            // Vote not cast
+            (
+                (currentlyVotingForMovie || userVotedForAward) ?
+                // Loader to show vote is being submitted
+                // Or text to show that user has already voted for award
+                (
+                    <button className="btn btn-block btn-disabled btn-light">
+                        {currentlyVotingForMovie ? <span><i className="fa fa-spinner fa-spin"></i> Submitting Vote...</span> : <span>Currently Voting</span>}
+                    </button>
+                ):
+                // Button to allow user to vote
+                (
+                    <button className="btn btn-success btn-block" onClick={vote}>Cast Vote</button>
+                )
+            );
 
     return metadata ? (
-        <div class="card movie_card mb-4">
-		    <img src={metadata.Poster} class="img-fluid ard-img-top" alt="Poster" />
+        <div className="card movie_card">
+		    <img src={metadata.Poster} className="img-fluid ard-img-top" alt="Poster" />
 		  
-            <div class="card-body">
-		  	    <i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer">
-		  	    </i>
-		        
-                <h5 class="card-title">{movie.name}</h5>
+            <div className="card-body mb-0 pb-0">
+                <h5 className="card-title">{movie.name}</h5>
 
 		   		<div className="d-flex align-items-center mb-3">
-                    <span class="movie_info">
+                    <span className="movie_info">
                         <i className="fa fa-clock-o mr-1"></i>{metadata.Released}
                     </span>
                     &nbsp;&nbsp;
                     <i className="fa fa-circle text-dark" style={{fontSize: '0.4em'}}></i>
                     &nbsp;&nbsp;
-                    <span class="movie_info">
+                    <span className="movie_info">
                         <i className="fa fa-play-circle mr-1"></i>{metadata.Runtime}
                     </span>
                 </div>
 
-                <p className="movie-plot">
+                <p className="movie-plot mb-0">
                     PLOT: {metadata.Plot}
                 </p>
 
-                <hr className="mb-4"/>
-
 		    </div>
 
+            <hr className="mt-3 mb-0"/>
 
             <div className="vote-area">
-                <div>Total Votes: 5 {winningMovie ? <span className="text-success">(Current Winner)</span> : ""}</div>
+                <div className="mb-2">
+                    Total Votes: {nomination.votes} {winningMovie ? <span className="text-success">(Current Winner)</span> : ""}
+                </div>
                 
                 <div>
-                {voteAlreadyCast ? <span>Vote Already Cast</span> : <button className="btn btn-success btn-block">Cast Vote</button>}
+                    {voteUi}
                 </div>
             </div>
 		</div>
     )
     :
     (
-        <div>
-            Movie Loading...
+        <div className="card movie_card">
+            <div className="card-body">
+            Loading movie info...
+            </div>
         </div>
     )
 }

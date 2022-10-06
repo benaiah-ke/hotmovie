@@ -14,10 +14,6 @@ function App() {
   return (
     <div className="App">
 
-      {/* <div>
-        User: {currentUser ? currentUser.username : 'None'}
-      </div> */}
-
         <BrowserRouter>
 
           <NavBar />
@@ -30,7 +26,7 @@ function App() {
 
         </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;

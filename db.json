@@ -17,12 +17,16 @@
         {
           "award_id": 1,
           "name": "Best Animated Film",
-          "votes": 0
+          "votes": 0,
+          "voters": []
         },
         {
           "award_id": 2,
           "name": "Best Movie of the year",
-          "votes": 0
+          "votes": 1,
+          "voters": [
+            1
+          ]
         }
       ]
     },
@@ -33,7 +37,8 @@
         {
           "award_id": 1,
           "name": "Best Animated Film",
-          "votes": 0
+          "votes": 0,
+          "voters": []
         }
       ]
     },
@@ -44,18 +49,10 @@
         {
           "award_id": 1,
           "name": "Best Animated Film",
-          "votes": 0
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Flee",
-      "nominations": [
-        {
-          "award_id": 1,
-          "name": "Best Animated Film",
-          "votes": 0
+          "votes": 1,
+          "voters": [
+            1
+          ]
         }
       ]
     },
@@ -66,7 +63,8 @@
         {
           "award_id": 2,
           "name": "Best Movie of the year",
-          "votes": 0
+          "votes": 0,
+          "voters": []
         }
       ]
     },
@@ -77,7 +75,8 @@
         {
           "award_id": 2,
           "name": "Best Movie of the year",
-          "votes": 0
+          "votes": 0,
+          "voters": []
         }
       ]
     }
