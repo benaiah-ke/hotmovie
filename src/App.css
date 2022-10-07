@@ -37,3 +37,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+
+.winner-img{
+    width: 80px;
+}
