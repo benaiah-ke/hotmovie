@@ -18,9 +18,13 @@ const useWinner = (award, movies) => {
                 winners = []
             }else if(nomination.votes === highest_votes){
                 // Muliple winners
-                winner = null
+                // Add current winner
+                winners.push(winner)
+
+                // Then the current movie
                 winners.push(movie)
-                console.log(winners)
+
+                winner = null
             }
         }
     });

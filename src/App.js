@@ -8,6 +8,7 @@ import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import NavBar from "./components/Navbar";
 import { MoviesProvider } from "./context/movies";
+import { Logout } from "./components/Logout";
 
 function App() {
   const {currentUser, setCurrentUser} = useContext(UserContext)
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MoviesProvider><Home /></MoviesProvider>} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
 

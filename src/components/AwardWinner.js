@@ -14,7 +14,7 @@ function AwardWinner({ award }){
         return (
             <div key={award.id} className="card mb-4">
                 <div className="card-body">
-                    <h5>{award.name}</h5>
+                    <h5 className="mb-3">{award.name}</h5>
                     <strong>Winner:</strong> {winner.name}
                 </div>
             </div>
@@ -29,8 +29,9 @@ function AwardWinner({ award }){
         return (
             <div key={award.id} className="card mb-4">
                 <div className="card-body">
-                    <h5>{award.name}</h5>
-                    <ol>
+                    <h5 className="mb-3">{award.name}</h5>
+                    <strong>Tie</strong>
+                    <ol className="px-3 mb-0">
                     {winner_list}
                     </ol>
                 </div>
@@ -40,8 +41,8 @@ function AwardWinner({ award }){
         return (
             <div key={award.id} className="card mb-4">
                 <div className="card-body">
-                    <h5>{award.name}</h5>
-                    No Winner Yet
+                    <h5 className="mb-3">{award.name}</h5>
+                    Winner not found. Votes have not been cast
                 </div>
             </div>
         )

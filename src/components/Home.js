@@ -29,6 +29,8 @@ function Home(){
                 <div className="col-lg-8">
                     <h2 className="mb-4">NOMINATED MOVIES</h2>
 
+                    <p>Vote for the hottest movies</p>
+
                     {awardList}
                 </div>
 
