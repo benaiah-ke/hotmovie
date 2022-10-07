@@ -5,6 +5,7 @@ import useFetchMovieMetadata from "../hooks/fetch_metadata";
 
 function Movie({ movie, nominationIndex, userVotedForAward, onVote }){
     const {currentUser} = useContext(UserContext)
+    const [showFullPlot, setShowFullPlot] = useState(false)
 
 
     // The movie's nomination in the current award
@@ -72,9 +73,11 @@ function Movie({ movie, nominationIndex, userVotedForAward, onVote }){
                     </span>
                 </div>
 
-                <p className="movie-plot mb-0">
+                <p className={(showFullPlot ? "full ":"") + "movie-plot mb-0"}>
                     PLOT: {metadata.Plot}
                 </p>
+
+                <a className="btn btn-link btn-sm" onClick={() => setShowFullPlot(true)}>Read More</a>
 
 		    </div>
 

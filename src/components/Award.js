@@ -91,7 +91,7 @@ function Award({ award }){
     }
 
     const movieList = nominatedMovies.map((movie) => (
-        <div key={movie.id} className="col-lg-4 col-xl-4 mb-4">
+        <div key={movie.id} className="col-sm-6 col-lg-4 col-xl-4 mb-4">
             <Movie
                 nominationIndex={movie.nominationIndex}
                 movie={movie}
