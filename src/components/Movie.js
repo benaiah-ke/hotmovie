@@ -3,16 +3,12 @@ import { useState } from "react";
 import { UserContext } from "../context/user";
 import useFetchMovieMetadata from "../hooks/fetch_metadata";
 
-function Movie({ movie, userVotedForAward, onVote }){
+function Movie({ movie, nominationIndex, userVotedForAward, onVote }){
     const {currentUser} = useContext(UserContext)
 
 
     // The movie's nomination in the current award
-    const nomination = movie.nominations[movie.nominationIndex]
-
-
-    // Will show if the movie is winning the award
-    var winningMovie = false;
+    const nomination = movie.nominations[nominationIndex]
 
 
     // Shows if the user voted for this movie for the current award
@@ -31,7 +27,7 @@ function Movie({ movie, userVotedForAward, onVote }){
 
     function vote(){
         setVoting(true)
-        onVote(movie)
+        onVote(movie, nominationIndex)
     }
 
     const voteUi =
@@ -86,7 +82,7 @@ function Movie({ movie, userVotedForAward, onVote }){
 
             <div className="vote-area">
                 <div className="mb-2">
-                    Total Votes: {nomination.votes} {winningMovie ? <span className="text-success">(Current Winner)</span> : ""}
+                    Total Votes: {nomination.votes}
                 </div>
                 
                 <div>
@@ -106,16 +102,3 @@ function Movie({ movie, userVotedForAward, onVote }){
 }
 
 export { Movie }
-
-// Actors: "Kelly Marie Tran, Awkwafina, Gemma Chan"
-// Awards: "Nominated for 1 Oscar. 12 wins & 59 nominations total"
-// Country: "United States"
-// DVD: "05 Mar 2021"
-// Director: "Don Hall, Carlos López Estrada, Paul Briggs"
-// Genre: "Animation, Action, Adventure"
-// Plot: "In a realm known as Kumandra, a re-imagined Earth inhabited by an ancient civilization, a warrior named Raya is determined to find the last dragon."
-// ​Poster: "https://m.media-amazon.com/images/M/MV5BZWNiOTc4NGItNGY4YS00…EtMDE2ODcxODEwNjkwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"
-// Rated: "PG"
-// Released: "05 Mar 2021"
-// Runtime: "107 min"
-// Year: "2021"

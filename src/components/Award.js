@@ -38,18 +38,6 @@ function Award({ award }){
                 // This will be passed down to <Movie /> for proper UI display
                 // True when we find first movie with user's vote
                 userVotedForAward = userVotedForAward || nomination.voters.indexOf(currentUser.id) !== -1
-
-                // Evaluate if the movie is winning in the award votes
-                // No winning movie found
-                if(winners === null){
-                    winners = {
-                        movieId: movie.id,
-                        votes: nomination.votes
-                    }
-                }else{
-                    // Check if movie has more votes than current winner(s)
-                    
-                }
             }
         })
 
@@ -58,7 +46,7 @@ function Award({ award }){
         return nominated
     })
 
-    function vote(movie) {
+    function vote(movie, nominationIndex) {
         if(currentlyVoting){
             alert('Please wait until the current vote is submitted')
             return
@@ -68,10 +56,10 @@ function Award({ award }){
         setVoting(true)
 
         // Add one vote to the movie
-        movie.nominations[movie.nominationIndex].votes += 1
+        movie.nominations[nominationIndex].votes += 1
 
         // Set the user to have voted
-        movie.nominations[movie.nominationIndex].voters.push(currentUser.id)
+        movie.nominations[nominationIndex].voters.push(currentUser.id)
 
         // Delete the nomination index
         // Remember it was a runtime metadata
@@ -106,6 +94,7 @@ function Award({ award }){
         <div className="col-lg-4 col-xl-4 mb-4">
             <Movie
                 key={movie.id}
+                nominationIndex={movie.nominationIndex}
                 movie={movie}
                 onVote={vote}
                 userVotedForAward={userVotedForAward}

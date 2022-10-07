@@ -12,19 +12,21 @@ const useWinner = (award, movies) => {
         if(nomination.award_id === award.id){
 
             // Evaluate if the movie is winning in the award votes
-            if(nomination.votes > highest_votes){
-                highest_votes = nomination.votes
-                winner = movie
-                winners = []
-            }else if(nomination.votes === highest_votes){
-                // Muliple winners
-                // Add current winner
-                winners.push(winner)
+            if(nomination.votes > 0){
+              if(nomination.votes > highest_votes){
+                  highest_votes = nomination.votes
+                  winner = movie
+                  winners = []
+              }else if(nomination.votes === highest_votes){
+                  // Muliple winners
+                  // Add current winner
+                  winners.push(winner)
 
-                // Then the current movie
-                winners.push(movie)
+                  // Then the current movie
+                  winners.push(movie)
 
-                winner = null
+                  winner = null
+              }
             }
         }
     });
