@@ -53,20 +53,40 @@ function Signup(){
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>New Username:</label>
-                <input value={formData.username} onChange={updateUsername} required />
-                <br/><br/>
+        <div className="container py-5">
+            <div className="row">
 
-                <label>Set Password:</label>
-                <input value={formData.password} onChange={updatePassword} required />
-                <br/><br/>
+                <div className="col-sm-9 col-md-8 col-lg-6 col-xl-5 mx-auto">
 
-                <button>Create Account</button>
+                    <h5 className="text-center mb-4">Create Account</h5>
 
-                <Link to="/login">Log in</Link>
-            </form>
+                    <div className="card">
+                        <div className="card-body">
+
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group mb-4">
+                                    <label>Your Username:</label>
+                                    <input value={formData.username} onChange={updateUsername} className="form-control" required />
+                                </div>
+
+                                <div className="form-group mb-4">
+                                    <label>Set Password:</label>
+                                    <input type="password" value={formData.password} onChange={updatePassword} className="form-control" required />
+                                </div>
+
+                                <button className="btn btn-block btn-success mb-4">Submit</button>
+
+                                <div className="text-center">
+                                    Have an account? <Link to="/login">Log In</Link>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     )
 }

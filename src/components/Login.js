@@ -48,20 +48,40 @@ function Login(){
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Username:</label>
-                <input value={formData.username} onChange={updateUsername} required />
-                <br/><br/>
+        <div className="container py-5">
+            <div className="row">
 
-                <label>Password:</label>
-                <input value={formData.password} onChange={updatePassword} required />
-                <br/><br/>
+                <div className="col-sm-9 col-md-8 col-lg-6 col-xl-5 mx-auto">
 
-                <button>Log In</button>
+                    <h5 className="text-center mb-4">Log In</h5>
 
-                <Link to="/signup">Create Account</Link>
-            </form>
+                    <div className="card">
+                        <div className="card-body">
+
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group mb-4">
+                                    <label>Username:</label>
+                                    <input value={formData.username} onChange={updateUsername} className="form-control" required />
+                                </div>
+
+                                <div className="form-group mb-4">
+                                    <label>Password:</label>
+                                    <input type="password" value={formData.password} onChange={updatePassword} className="form-control" required />
+                                </div>
+
+                                <button className="btn btn-block btn-success mb-4">Log In</button>
+
+                                <div className="text-center">
+                                    Not registered? <Link to="/signup">Create Account</Link>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     )
 }
