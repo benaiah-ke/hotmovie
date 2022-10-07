@@ -1,6 +1,8 @@
 # HotMovie
 
 HotMovie is a web app that lets movie fans vote for hot movies in specified categories.
+The preview is available at:
+[http://hotmovie.benaiah.ehouse.co.ke/](http://hotmovie.benaiah.ehouse.co.ke/)
 
 ## Set up
 In the project directory, run the command `npm install` to install the required node modules
