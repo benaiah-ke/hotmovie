@@ -5,7 +5,7 @@ import { AwardWinner } from "./AwardWinner";
 function Results(){
     const {movies, awards} = useContext(MoviesContext)
     
-    const results = awards.map((award) => ( <AwardWinner award={award}/> ))
+    const results = awards.map((award) => ( <AwardWinner key={award.id} award={award}/> ))
 
     return (
         <div>
